@@ -1,0 +1,1318 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brendo | מדים ובגדי עבודה ממותגים לעסקים</title>
+<meta name="description" content="מדים ובגדי עבודה בצבעים ובלוגו של העסק שלכם. חולצות, קפוצ'ונים, כובעים ועוד, בהדפסת משי, DTF, רקמה ו-DTG.">
+<meta name="theme-color" content="#0c0d0d">
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Heebo-hebrew.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/icons/phosphor.css">
+<link rel="stylesheet" href="assets/icons/phosphor.css">
+<style>
+/* ---------------------------------------------------------------
+   Brendo. Clean black page, theme locked dark.
+   Brendo green = glow and brand surfaces (the uniform, the Brendo column).
+   Yellow = the one accent (stripes, marks, reached states).
+   Main button = light pill. Radius: cards 20, small 14, inputs 12, buttons pill.
+   --------------------------------------------------------------- */
+:root{
+  --bg:#0c0d0d;
+  --surface:#141616;
+  --surface-2:#1b1e1d;
+  --surface-3:#232726;
+  --line:rgba(242,238,227,.09);
+  --line-2:rgba(242,238,227,.16);
+  --cream:#f2eee3;
+  --text:rgba(242,238,227,.88);
+  --muted:rgba(242,238,227,.6);
+  --green:#0f3a33;
+  --green-2:#144740;
+  --green-glow:#2f7a69;
+  --green-ink:#082621;
+  --yellow:#dcae48;
+  --r-card:20px;
+  --r-sm:14px;
+  --r-input:12px;
+  --r-pill:999px;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-io:cubic-bezier(.77,0,.175,1);
+  --shell:1200px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:12px;background:var(--bg)}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Assistant',system-ui,sans-serif;font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;caret-color:var(--yellow);
+}
+::selection{background:var(--yellow);color:var(--green-ink)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--surface-3);border-radius:10px;border:2px solid var(--bg)}
+h1,h2,h3{font-family:'Heebo',system-ui,sans-serif;color:var(--cream);margin:0;line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(28px,5.4vw,46px);font-weight:900;text-wrap:balance}
+h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+p,figure,blockquote{margin:0}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.shell{max-width:var(--shell);margin-inline:auto;padding-inline:20px}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Heebo',sans-serif;font-weight:700;font-size:16px;line-height:1;
+  padding:15px 26px;border-radius:var(--r-pill);border:1px solid transparent;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:transform 160ms var(--ease-out),background-color 200ms ease,border-color 200ms ease;
+}
+.btn:active{transform:scale(.97)}
+.btn-light{background:var(--cream);color:#101211}
+.btn-ghost{background:rgba(242,238,227,.06);color:var(--cream);border-color:var(--line-2)}
+.btn-green{background:var(--green);color:#fff;font-weight:800;border-color:rgba(47,122,105,.75);box-shadow:0 14px 34px -10px rgba(47,122,105,.75)}
+@media (hover:hover) and (pointer:fine){
+  .btn-light:hover{background:#fff}
+  .btn-green:hover{background:var(--green-2)}
+  .btn-ghost:hover{border-color:rgba(242,238,227,.4)}
+}
+
+/* ---------- top: nav + hero ---------- */
+.top{position:relative;overflow:hidden;isolation:isolate}
+.top::before{ /* the green light the shirt rises out of */
+  content:"";position:absolute;z-index:-1;left:50%;bottom:-30%;width:min(1100px,160vw);aspect-ratio:1.3;
+  transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(47,122,105,.55),rgba(20,71,64,.28) 45%,transparent 72%);
+}
+.top::after{ /* a warm hint behind the chest */
+  content:"";position:absolute;z-index:-1;left:50%;bottom:8%;width:min(520px,90vw);aspect-ratio:1;
+  transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(220,174,72,.12),transparent 70%);
+}
+/* phones: menu button, centred logo, an empty cell to balance it. 980px+: logo, links, button */
+.nav{position:relative;z-index:20;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:12px;height:72px;max-width:var(--shell);margin-inline:auto;padding-inline:16px}
+.nav .brand{justify-self:center}
+.nav-cta{display:none}
+.menu-btn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line-2);background:rgba(242,238,227,.04);color:var(--cream);display:grid;place-items:center;font-size:22px;cursor:pointer;transition:transform 160ms var(--ease-out),background-color 200ms ease}
+.menu-btn:active{transform:scale(.95)}
+.menu{position:absolute;top:calc(100% - 4px);inset-inline:12px;display:grid;gap:2px;padding:10px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line-2);box-shadow:0 30px 60px rgba(0,0,0,.55);
+  opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top center;pointer-events:none;transition:opacity 180ms ease,transform 220ms var(--ease-out)}
+.menu.open{opacity:1;transform:none;pointer-events:auto}
+.menu a:not(.btn){display:block;padding:14px 14px;border-radius:12px;text-decoration:none;color:var(--cream);font-family:'Heebo',sans-serif;font-weight:700;font-size:17px}
+.menu a:not(.btn):active{background:var(--surface-3)}
+.menu .btn{margin-top:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:36px;height:36px;border-radius:50%;border:1px solid var(--line-2)}
+.brand b{font-family:'Heebo',sans-serif;font-weight:800;font-size:19px;color:var(--cream);letter-spacing:.01em}
+.nav-links{display:none;gap:32px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-size:15px;color:var(--muted);transition:color 180ms ease}
+.nav-links a:hover{color:var(--cream)}
+.nav .btn{padding:11px 18px;font-size:14.5px}
+
+.hero{text-align:center;padding:44px 20px 0}
+.hero h1{font-size:clamp(40px,10.4vw,90px);font-weight:900;letter-spacing:-.035em;text-wrap:balance;max-width:13ch;margin-inline:auto}
+.hero h1{line-height:1.12}
+/* the exact brand green is unreadable as text on black, so it becomes the block behind the words */
+.hero h1 em{display:inline-block;margin-top:.2em;}
+h2 .hl{display:inline-block;margin-top:.28em;margin-inline-start:.12em}
+.hero h1 em,.hl{font-style:normal;color:var(--cream);background:var(--green);padding:0 .16em .05em;border-radius:.16em;-webkit-box-decoration-break:clone;box-decoration-break:clone;box-shadow:0 0 0 1px rgba(47,122,105,.6),0 14px 44px -12px rgba(47,122,105,.9)}
+.hero .lead{color:var(--muted);font-size:clamp(16px,4vw,18.5px);max-width:440px;margin:18px auto 0}
+.hero-cta{position:relative;z-index:4;margin-top:-22px;padding:18px 36px;font-size:17px}
+.hero-stage{position:relative;width:min(540px,90vw);margin:36px auto 0}
+.hero-stage .tee{filter:drop-shadow(0 -4px 26px rgba(220,174,72,.16)) drop-shadow(0 0 60px rgba(47,122,105,.35))}
+.chip{
+  position:absolute;z-index:2;display:flex;align-items:center;gap:10px;text-align:right;
+  background:rgba(20,22,22,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line-2);border-radius:var(--r-sm);padding:10px 14px 10px 12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+}
+.chip small{display:block;font-size:12px;color:var(--muted);line-height:1.3}
+.chip strong{display:block;font-family:'Heebo',sans-serif;font-size:14.5px;font-weight:700;color:var(--cream);line-height:1.3}
+.chip .ico{flex:0 0 34px;height:34px;border-radius:10px;background:var(--green);display:grid;place-items:center}
+.chip .swatch{width:20px;height:13px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--yellow) 0 6px,transparent 6px 10px)}
+.chip-a{top:-6%;right:0} /* on phones it sits above the shoulder, never over the chest mark it describes */
+.chip-b{top:56%;left:-2%}
+.hero{padding-bottom:64px}
+
+/* ---------- sections ---------- */
+section{padding:88px 0;position:relative}
+.s-head{text-align:center;max-width:680px;margin-inline:auto}
+.s-head p{color:var(--muted);margin-top:14px;font-size:17px}
+/* the brand green lifted one step: #0f3a33 itself disappears as type on black */
+.green-type{color:#3f9a83}
+.methods-head h2{font-size:clamp(34px,9vw,52px)}
+.methods-head p{color:var(--cream);margin-top:8px;font-size:17.5px}
+.band{border-top:1px solid var(--line)}
+
+/* ---------- uniform builder ---------- */
+.builder{margin-top:48px;display:grid;gap:26px;align-items:center}
+.stage-wrap{position:relative;max-width:420px;width:100%;margin-inline:auto}
+.stage-glow{position:absolute;inset:4% -6% -4%;border-radius:50%;background:radial-gradient(closest-side,rgba(47,122,105,.32),transparent 72%);z-index:0;transition:opacity 800ms ease;opacity:.5}
+.c1 + .stage-glow,.stage-wrap:has(.c1) .stage-glow{opacity:1}
+.stage{position:relative;z-index:1;aspect-ratio:400/440;perspective:1600px}
+.flipper{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 900ms var(--ease-io)}
+.face{position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.front{transform:translateZ(9px)}
+.face.back{transform:rotateY(180deg) translateZ(9px)}
+/* the fabric's thickness: six slices fill the gap between the faces, so edge-on it reads as a shirt, not paper */
+.slab{position:absolute;inset:0;transform-style:preserve-3d}
+.slab svg{position:absolute;inset:0;width:100%;height:100%;fill:#0a2a25}
+.slab svg:nth-child(1){transform:translateZ(-7.5px)}.slab svg:nth-child(2){transform:translateZ(-4.5px)}.slab svg:nth-child(3){transform:translateZ(-1.5px)}
+.slab svg:nth-child(4){transform:translateZ(1.5px)}.slab svg:nth-child(5){transform:translateZ(4.5px)}.slab svg:nth-child(6){transform:translateZ(7.5px)}
+.stage{touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.stage.dragging{cursor:grabbing}
+.stage.dragging .flipper{transition:none}
+
+.t-body{fill:#e6e9e6;stroke:rgba(0,0,0,.2);stroke-width:1.5;transition:fill 800ms ease}
+.t-neck{fill:#c9cfcb;transition:fill 800ms ease}
+.c1 .t-body{fill:var(--green)}
+.c1 .t-neck{fill:var(--green-ink)}
+.t-stripes line,.t-collar{stroke:var(--yellow);fill:none;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 700ms var(--ease-out)}
+.t-stripes line{stroke-width:7}
+.t-collar{stroke-width:5}
+.t-stripes line:nth-child(2n){transition-delay:120ms}
+.c2 .t-stripes line,.c2 .t-collar{stroke-dashoffset:0}
+.t-mark{opacity:0;transform:scale(.5);transform-box:fill-box;transform-origin:center;
+  transition:opacity 300ms ease,transform 620ms cubic-bezier(.34,1.56,.64,1)}
+.c3 .t-mark.chest{opacity:1;transform:none}
+.c4 .t-mark.big{opacity:1;transform:none;transition-delay:520ms}
+
+.callcol{display:none} /* phones get the shirt alone */
+.co{border-radius:var(--r-sm);padding:14px;border:1px solid var(--line);background:var(--surface);transition:background-color 300ms ease,border-color 300ms ease}
+.co .n{
+  display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;
+  background:var(--surface-3);color:var(--muted);font-family:'Heebo',sans-serif;font-weight:800;font-size:13px;
+  transition:background-color 300ms ease,color 300ms ease;
+}
+.co h3{font-size:16.5px;margin-top:10px}
+.co p{font-size:14.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+.co.reached .n{background:var(--yellow);color:#16130a}
+.co.now{background:var(--surface-2);border-color:rgba(220,174,72,.4)}
+
+.stage-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);padding:4px}
+.seg button{
+  border:0;background:transparent;font-family:'Heebo',sans-serif;font-weight:700;font-size:14px;color:var(--muted);
+  padding:9px 18px;border-radius:var(--r-pill);cursor:pointer;transition:background-color 200ms ease,color 200ms ease;
+}
+.seg button[aria-pressed="true"]{background:var(--cream);color:#101211}
+.replay{
+  border:1px solid var(--line-2);background:transparent;color:var(--cream);font-family:'Heebo',sans-serif;font-weight:700;font-size:14px;
+  padding:10px 16px;border-radius:var(--r-pill);cursor:pointer;display:inline-flex;gap:6px;align-items:center;
+  transition:transform 160ms var(--ease-out),border-color 200ms ease;
+}
+.replay:active,.seg button:active{transform:scale(.97)}
+.drag-hint{display:flex;gap:7px;align-items:center;justify-content:center;margin-top:12px;font-size:14px;color:var(--muted)}
+.drag-hint i{font-size:18px;color:var(--yellow)}
+@media (hover:hover) and (pointer:fine){.replay:hover{border-color:rgba(242,238,227,.4)}}
+
+/* ---------- how it works ---------- */
+.msg{background:var(--surface-3);border:1px solid var(--line-2);border-radius:16px 16px 16px 4px;padding:12px;box-shadow:0 14px 30px rgba(0,0,0,.35);max-width:250px}
+.file{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.25);border-radius:10px;padding:8px 10px}
+.file svg{width:34px;height:34px;flex:0 0 34px;border-radius:8px;background:var(--green)}
+.file b{font-family:'Heebo',sans-serif;font-size:13px;color:var(--cream);display:block;direction:ltr;text-align:right}
+.file small{font-size:12px;color:var(--muted)}
+.msg p{font-size:14px;margin-top:9px;line-height:1.45;color:var(--text)}
+.stack{position:relative;width:220px;height:150px}
+.stack svg{position:absolute;width:112px;bottom:0;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45))}
+.stack svg:nth-child(1){right:0;rotate:6deg}
+.stack svg:nth-child(2){right:54px;z-index:1}
+.stack svg:nth-child(3){right:108px;rotate:-6deg}
+.badge{position:absolute;top:-4px;left:-6px;z-index:2;background:var(--surface-3);border:1px solid var(--line-2);border-radius:var(--r-pill);padding:6px 12px;font-family:'Heebo',sans-serif;font-weight:700;font-size:12.5px;color:var(--cream);display:flex;gap:5px;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.badge i{color:#3f9a83;font-size:15px}
+
+/* ---------- process animation ----------
+   Four scenes on one stage, each with its own short timeline. A scene only plays
+   while it holds .on; it leaves without a transition so nothing reverts on screen. */
+.proc{margin-top:48px;display:grid;gap:18px}
+.proc-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.proc-steps button{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;text-align:right;padding:4px 0}
+.proc-steps button:focus-visible{outline:2px solid var(--green-glow);outline-offset:4px;border-radius:6px}
+.proc-steps .bar{display:block;height:4px;border-radius:4px;background:var(--surface-2);overflow:hidden;margin-bottom:10px}
+/* brand green, lifted one step so it reads on black */
+.proc-steps .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green-glow),#3f9a83);box-shadow:0 0 12px rgba(47,122,105,.7)}
+.proc-steps li.done .bar i{width:100%}
+.proc-steps li.on .bar i{width:100%;transition:width var(--dur,3600ms) linear}
+.proc-steps b{display:block;font-family:'Heebo',sans-serif;font-weight:700;font-size:13.5px;line-height:1.3;color:var(--muted);transition:color 300ms ease}
+.proc-steps small{display:none;font-size:14.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+.proc-steps li.on b,.proc-steps li.done b{color:var(--cream)}
+.proc-stage{position:relative;isolation:isolate;min-height:400px;border-radius:var(--r-card);overflow:hidden;border:1px solid var(--line);
+  background:radial-gradient(60% 70% at 50% 105%,rgba(47,122,105,.42),transparent 70%),var(--surface)}
+.proc-stage::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.7;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(closest-side,#000,transparent);mask-image:radial-gradient(closest-side,#000,transparent)}
+.scene{position:absolute;inset:0;display:grid;place-items:center;padding:22px;opacity:0;transform:scale(.97);pointer-events:none}
+.scene.on{opacity:1;transform:none;transition:opacity 450ms ease,transform 600ms var(--ease-out)}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes blink-in{0%{opacity:0}12%{opacity:1}88%{opacity:1}100%{opacity:0}}
+@keyframes dot{0%,80%,100%{transform:none;opacity:.4}40%{transform:translateY(-4px);opacity:1}}
+@keyframes to-green{to{fill:#0f3a33}}
+@keyframes to-ink{to{fill:#082621}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes mark-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+@keyframes press{50%{transform:scale(.92)}100%{transform:none}}
+@keyframes go-green{to{background:var(--green);color:#fff}}
+@keyframes out{to{opacity:0}}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes ring{from{opacity:.9;transform:scale(.6)}to{opacity:0;transform:scale(1.8)}}
+@keyframes rise-s{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:none}}
+@keyframes pick{to{box-shadow:0 0 0 2px var(--green-glow)}}
+
+/* scene 1: the message */
+.chat{width:min(360px,100%);background:var(--surface-3);border:1px solid var(--line-2);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.chat-head{display:flex;align-items:center;gap:9px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.chat-head img{width:28px;height:28px;border-radius:50%}
+.chat-head b{font-family:'Heebo',sans-serif;font-size:14.5px;color:var(--cream)}
+.bub{max-width:88%;border-radius:16px;padding:10px 12px;font-size:14.5px;line-height:1.45}
+.bub p{margin:0}
+.bub.me{align-self:flex-start;background:var(--green);color:var(--cream);border-radius:16px 16px 4px 16px}
+.bub.me .file{background:rgba(0,0,0,.22);margin-bottom:8px}
+.reply{align-self:flex-end;position:relative;min-height:42px;min-width:70px}
+.typing{position:absolute;left:0;top:0;display:flex;gap:4px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:16px;padding:14px 14px;opacity:0}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--cream);animation:dot 1s ease-in-out infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+.bub.them{background:var(--surface-2);border:1px solid var(--line-2);color:var(--text);border-radius:16px 16px 16px 4px;white-space:nowrap}
+.scene.on .a1{animation:pop 500ms var(--ease-out) 250ms both}
+.scene.on .typing{animation:blink-in 1100ms ease 1000ms both}
+.scene.on .a3{animation:pop 500ms var(--ease-out) 2100ms both}
+
+/* scene 2: the design */
+.canvas{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;width:min(420px,100%)}
+.palette{display:grid;gap:10px;background:var(--surface-3);border:1px solid var(--line-2);border-radius:14px;padding:10px}
+.palette span{width:28px;height:28px;border-radius:50%;border:2px solid var(--surface-3);box-shadow:0 0 0 1px var(--line-2)}
+.d-shirt{width:100%;max-width:270px;margin-inline:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
+.d-body{fill:#e6e9e6;stroke:rgba(0,0,0,.2);stroke-width:1.5}
+.d-neck{fill:#c9cfcb}
+.d-stripes line,.d-collar{stroke:var(--yellow);fill:none;stroke-dasharray:1;stroke-dashoffset:1}
+.d-stripes line{stroke-width:7}.d-collar{stroke-width:5}
+.d-mark{opacity:0;transform-box:fill-box;transform-origin:center}
+.scene.on .sw-g{animation:pick 300ms ease 400ms both}
+.scene.on .d-body{animation:to-green 700ms ease 750ms both}
+.scene.on .d-neck{animation:to-ink 700ms ease 750ms both}
+.scene.on .sw-y{animation:pick 300ms ease 1350ms both}
+.scene.on .d-stripes line,.scene.on .d-collar{animation:draw 650ms var(--ease-out) 1500ms both}
+.scene.on .d-mark{animation:mark-pop 600ms cubic-bezier(.34,1.56,.64,1) 2200ms both}
+
+/* scene 3: the proof */
+.approve{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center}
+.pair{display:flex;gap:6px}
+.pair svg{width:120px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.45))}
+.ap-card{background:var(--surface-3);border:1px solid var(--line-2);border-radius:16px;padding:14px 16px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.ap-card small{display:block;font-size:12.5px;color:var(--muted)}
+.ap-card b{display:block;font-family:'Heebo',sans-serif;font-size:15.5px;color:var(--cream);margin:2px 0 12px}
+.ap-btn{position:relative;display:inline-grid;font-family:'Heebo',sans-serif;font-weight:700;font-size:14px;background:var(--cream);color:#101211;border-radius:var(--r-pill);padding:9px 18px}
+.ap-btn > span{grid-area:1/1;display:inline-flex;gap:5px;align-items:center;justify-content:center}
+.ap-btn .t2{opacity:0}
+.ap-btn::after{content:"";position:absolute;inset:-6px;border-radius:var(--r-pill);border:2px solid var(--green-glow);opacity:0}
+.scene.on .pair svg{animation:pop 500ms var(--ease-out) both}
+.scene.on .pair svg:nth-child(2){animation-delay:150ms}
+.scene.on .ap-card{animation:pop 500ms var(--ease-out) 350ms both}
+.scene.on .ap-btn{animation:press 360ms ease 1500ms both,go-green 300ms ease 1700ms both}
+.scene.on .ap-btn .t1{animation:out 180ms ease 1700ms both}
+.scene.on .ap-btn .t2{animation:in 260ms var(--ease-out) 1760ms both}
+.scene.on .ap-btn::after{animation:ring 700ms var(--ease-out) 1720ms both}
+
+/* scene 4: the order */
+.scene.on .stack svg{animation:rise-s 650ms var(--ease-out) both}
+.scene.on .stack svg:nth-child(2){animation-delay:180ms}
+.scene.on .stack svg:nth-child(3){animation-delay:360ms}
+.scene.on .stack .badge{animation:pop 500ms var(--ease-out) 1100ms both}
+
+/* ---------- methods ----------
+   Each technique shown as what it does to the B on green fabric, not as a paragraph. */
+.marquee{margin-top:30px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;width:max-content;animation:marq 28s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.pills{display:flex;gap:10px;margin:0;padding:0 5px;list-style:none}
+.pills li{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 16px;font-size:15px;color:var(--cream);font-weight:600}
+.pills i{font-size:18px;color:#3f9a83}
+@keyframes marq{to{transform:translateX(50%)}}
+.techs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.tech{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;text-align:center;padding-bottom:18px;transition:border-color 300ms ease,translate 300ms var(--ease-out)}
+.tech svg{width:100%;aspect-ratio:1}
+.tech .glyph{transform-box:view-box;transform-origin:100px 104px;transition:transform 500ms var(--ease-out)}
+.tech h3{margin-top:14px;font-size:18px}
+.tech .tag{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--cream);background:var(--green);border:1px solid rgba(47,122,105,.6);border-radius:var(--r-pill);padding:4px 11px}
+@media (hover:hover) and (pointer:fine){
+  .tech:hover{border-color:rgba(47,122,105,.6);translate:0 -4px}
+  .tech:hover .glyph{transform:scale(1.08)}
+}
+
+/* ---------- compare ----------
+   Phones: every row is a small block, the topic as a centred pill, then Brendo
+   (green box) beside a regular print shop. From 768px the full four-column table. */
+.compare{margin-top:36px;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--surface);padding:0 8px 8px}
+.cmp-head,.cmp-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.cmp-head{padding:6px 0 0}
+.cmp-head > div:first-child,.cmp-head > div:last-child,.cmp-row > div:last-child{display:none}
+.cmp-head > div{font-family:'Heebo',sans-serif;font-weight:800;font-size:14.5px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:7px;padding:8px}
+.cmp-head .us-h{color:var(--cream)}
+.cmp-head .us-h img{width:22px;height:22px;border-radius:50%}
+/* rows sit close: the pill alone separates one topic from the next */
+.cmp-row{padding-top:10px}
+.cmp-row .k{grid-column:1 / -1;display:flex;justify-content:center}
+.cmp-row .k span{font-family:'Heebo',sans-serif;font-weight:800;font-size:12.5px;color:var(--cream);background:var(--surface-3);border:1px solid var(--line-2);border-radius:var(--r-pill);padding:3px 12px}
+.cmp-row .us,.cmp-row .them{padding:9px 10px;border-radius:12px;font-size:14px;line-height:1.38;display:flex;gap:7px;align-items:flex-start}
+.cmp-row .us{font-weight:600;color:var(--cream);background:var(--green);border:1px solid rgba(47,122,105,.55)}
+.cmp-row .us i{flex:0 0 20px;height:20px;border-radius:50%;background:#3f9a83;color:#fff;display:grid;place-items:center;font-size:12px;margin-top:1px}
+.cmp-row .them{color:var(--muted);background:var(--surface-2)}
+.cmp-row .them::before{content:"";flex:0 0 18px;height:18px;margin-top:2px;border-radius:50%;border:1.5px solid rgba(242,238,227,.25)}
+.cmp-row .them b{display:none}
+.cmp-note{margin-top:16px;font-size:14px;color:var(--muted);text-align:center}
+
+/* ---------- reviews ---------- */
+.reviews{display:grid;gap:12px;margin-top:44px}
+.review{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:26px 24px}
+.review .stars{display:flex;gap:2px;color:var(--yellow);font-size:16px;margin-bottom:14px}
+.review p{font-size:17px;line-height:1.6;color:var(--text)}
+.review .by{display:block;margin-top:16px;font-size:14px;color:var(--muted);font-family:'Heebo',sans-serif}
+
+/* ---------- green band (reviews) ---------- */
+.green-wrap{position:relative}
+.wave{display:block;width:100%;height:clamp(60px,9vw,140px);margin-bottom:-1px}
+.wave.flip{transform:scaleY(-1);margin:-1px 0 0}
+.green-band{position:relative;isolation:isolate;overflow:hidden;padding:24px 0 60px;
+  background:var(--green)}
+.green-band h2{font-size:clamp(36px,9.5vw,58px)}
+.green-band .s-head p{color:rgba(242,238,227,.85);margin-top:6px;font-size:19px}
+.band-rings svg{position:absolute;z-index:-1;width:min(560px,120vw);height:auto;animation:spin 120s linear infinite}
+.band-rings .r1{top:-240px;right:-200px}
+.band-rings .r2{bottom:-260px;left:-220px;animation-direction:reverse}
+.green-band .reviews{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:36px -20px 0;padding:8px 20px 22px;scrollbar-width:none}
+.green-band .reviews::-webkit-scrollbar{display:none}
+.green-band .review{flex:0 0 84%;scroll-snap-align:center;display:flex;flex-direction:column;background:#fff;border:0;border-radius:24px;padding:26px 24px 20px;box-shadow:0 34px 60px -28px rgba(0,0,0,.6)}
+.review .q{display:block;height:36px;font-family:Georgia,'Times New Roman',serif;font-size:76px;line-height:.82;color:var(--green)}
+.green-band .review p{flex:1;margin-top:8px;font-size:18px;line-height:1.6;color:#151716}
+.review figcaption{display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid #e8ece9;font-family:'Heebo',sans-serif;font-weight:700;font-size:14.5px;color:var(--green)}
+.review .av{flex:0 0 36px;height:36px;border-radius:50%;background:var(--green);display:grid;place-items:center}
+.review .av svg{width:28px;height:28px}
+.swipe-dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
+.swipe-dots i{width:7px;height:7px;border-radius:50%;background:rgba(242,238,227,.3)}
+.swipe-dots i{transition:background-color 200ms ease}
+.swipe-dots i.on{background:var(--cream)}
+
+/* ---------- faq ---------- */
+.faq{max-width:760px;margin:44px auto 0;display:grid;gap:10px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);transition:border-color 200ms ease}
+details[open]{border-color:var(--line-2)}
+summary{list-style:none;cursor:pointer;padding:20px 22px 20px 52px;position:relative;font-family:'Heebo',sans-serif;font-weight:700;font-size:17px;color:var(--cream)}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"";position:absolute;left:24px;top:26px;width:8px;height:8px;
+  border-right:2px solid var(--yellow);border-bottom:2px solid var(--yellow);transform:rotate(45deg);transition:transform 200ms var(--ease-out)}
+details[open] summary::after{transform:rotate(-135deg);top:30px}
+details p{padding:0 22px 20px;color:var(--muted);font-size:16px}
+.todo{color:#16130a;background:var(--yellow);border-radius:4px;padding:0 5px;font-weight:600}
+
+/* ---------- quote / form ---------- */
+.final{padding:20px 0 88px}
+.final .shell{padding-inline:8px} /* on phones the card runs nearly edge to edge so the form has room */
+.final-card{
+  position:relative;isolation:isolate;overflow:hidden;border-radius:28px;padding:34px 10px 10px;text-align:center;
+  border:1px solid rgba(47,122,105,.5);
+  background:
+    radial-gradient(55% 45% at 50% 0%,rgba(47,122,105,.7),transparent 72%),
+    radial-gradient(40% 45% at 0% 100%,rgba(20,71,64,.95),transparent 70%),
+    radial-gradient(40% 45% at 100% 80%,rgba(15,58,51,.95),transparent 70%),
+    radial-gradient(28% 24% at 88% 8%,rgba(220,174,72,.12),transparent 70%),
+    linear-gradient(180deg,#0f2924 0%,#0c0d0d 100%);
+  box-shadow:inset 0 1px 0 rgba(242,238,227,.08),0 50px 140px -50px rgba(47,122,105,.6);
+}
+.final-card::before{ /* a faint grid that fades out from the middle */
+  content:"";position:absolute;inset:0;z-index:-1;opacity:.6;
+  background-image:linear-gradient(rgba(242,238,227,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(242,238,227,.05) 1px,transparent 1px);background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent)}
+.final-card::after{ /* the glow the form sits on */
+  content:"";position:absolute;z-index:-1;left:50%;top:62%;width:80%;height:55%;transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side,rgba(47,122,105,.5),transparent);filter:blur(30px)}
+.rings{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.rings svg{position:absolute;width:min(420px,80vw);height:auto;animation:spin 90s linear infinite}
+.rings .r1{top:-140px;right:-140px}
+.rings .r2{bottom:-160px;left:-160px;animation-direction:reverse;animation-duration:120s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.final-card h2{max-width:16ch;margin-inline:auto}
+.final-card > p{color:var(--muted);margin:14px auto 0;max-width:460px}
+.checks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:22px 0 0;padding:0;list-style:none}
+.checks li{display:inline-flex;gap:7px;align-items:center;font-size:14.5px;color:var(--cream);font-weight:600}
+.checks i{width:20px;height:20px;border-radius:50%;background:var(--yellow);color:#16130a;display:grid;place-items:center;font-size:12px}
+form{max-width:680px;margin:22px auto 0;background:var(--surface);border:1px solid rgba(47,122,105,.45);border-radius:var(--r-card);padding:20px 16px;text-align:right;display:grid;gap:16px}
+.row{display:grid;gap:16px}
+/* phones: heading and form only, so the whole thing fits one screen */
+.final-card > p,.checks{display:none}
+.final-card h2{font-size:clamp(26px,7vw,46px)}
+.more{background:transparent;border:1px dashed var(--line-2);border-radius:var(--r-input)}
+.more[open]{border-style:solid}
+.more summary{padding:12px 14px 12px 40px;font-size:14.5px;color:var(--cream)}
+.more summary::after{top:17px;left:16px;width:7px;height:7px;border-color:#3f9a83}
+.more[open] summary::after{top:20px}
+.more-body{display:grid;gap:12px;padding:0 12px 12px}
+.field{display:grid;gap:7px}
+label{font-family:'Heebo',sans-serif;font-weight:700;font-size:15px;color:var(--cream)}
+label .opt{font-weight:500;color:var(--muted)}
+input,select,textarea{
+  width:100%;font-family:inherit;font-size:17px;color:var(--cream);background:var(--bg);
+  border:1px solid var(--line-2);border-radius:var(--r-input);padding:14px 15px;transition:border-color 180ms ease,box-shadow 180ms ease}
+textarea{min-height:96px;resize:vertical}
+input::placeholder,textarea::placeholder{color:rgba(242,238,227,.5)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--yellow);box-shadow:0 0 0 3px rgba(220,174,72,.18)}
+select{appearance:none;padding-inline-start:40px}
+select option{background:var(--surface);color:var(--cream)}
+.sel{position:relative}
+.sel::after{content:"";position:absolute;left:17px;top:22px;width:8px;height:8px;border-right:2px solid var(--yellow);border-bottom:2px solid var(--yellow);transform:rotate(45deg);pointer-events:none}
+.err{font-size:14px;color:#f2a38f}
+.field.bad input,.field.bad select{border-color:#e07a62}
+form .btn{width:100%;padding:17px;margin-top:4px}
+.form-state{display:none;font-size:15px;color:var(--cream);background:var(--surface-2);border:1px solid var(--line-2);border-radius:var(--r-input);padding:13px 15px}
+.form-state.on{display:block}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:34px 0 40px}
+.foot{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{text-decoration:none;color:var(--muted);font-size:15px;transition:color 180ms ease}
+.foot-links a:hover{color:var(--cream)}
+.foot small{width:100%;color:var(--muted);font-size:13.5px}
+
+/* ---------- motion ---------- */
+.rise{animation:rise 1000ms var(--ease-out) both}
+.chip{animation:fade-up 700ms var(--ease-out) both}
+.chip-a{animation-delay:550ms}
+.chip-b{animation-delay:700ms}
+@keyframes rise{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
+@keyframes fade-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* starts visible: a shared link's thumbnail or a reader who never scrolls still sees every section */
+.rv{opacity:.4;transform:translateY(14px);transition:opacity 620ms var(--ease-out),transform 620ms var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- wider screens ---------- */
+@media (min-width:768px){
+  body{font-size:18px}
+  .shell,.nav{padding-inline:32px}
+  section{padding:120px 0}
+  .nav{height:84px}
+  .hero{padding-top:64px}
+  .chip-a{top:20%;right:-16%}
+  .chip-b{top:50%;left:-16%}
+  .builder{grid-template-columns:1fr 420px 1fr;gap:36px}
+  .callcol{display:grid;grid-template-columns:1fr;gap:14px}
+  .proc{grid-template-columns:300px 1fr;gap:44px;align-items:center}
+  .proc-steps{grid-template-columns:1fr;gap:0}
+  .proc-steps li{padding:16px 0;border-bottom:1px solid var(--line)}
+  .proc-steps li:last-child{border-bottom:0}
+  .proc-steps b{font-size:17px}
+  .proc-steps small{display:block}
+  .proc-stage{min-height:480px}
+  .pair svg{width:150px}
+
+  .techs{grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+  .compare{padding:0}
+  .cmp-head,.cmp-row{grid-template-columns:1fr 1.35fr 1fr 1fr;gap:0}
+  .cmp-head{padding:0}
+  .cmp-row{padding:0;margin:0}
+  .cmp-head > div:first-child,.cmp-head > div:last-child,.cmp-row > div:last-child{display:flex}
+  .cmp-head > div{padding:18px 20px;font-size:14.5px;justify-content:flex-start}
+  .cmp-head .us-h{background:var(--green)}
+  .cmp-row .k{grid-column:auto;justify-content:flex-start;margin:0;padding:18px 20px}
+  .cmp-row .k span{background:none;border:0;padding:0;font-size:15.5px}
+  .cmp-row .us,.cmp-row .them{padding:18px 20px;border-radius:0;font-size:16px}
+  .cmp-row .us{background:rgba(15,58,51,.55);border:0}
+  .cmp-row .them{background:none}
+  .cmp-row .them::before{display:none}
+  .cmp-row .us i{flex-basis:22px;height:22px;font-size:13px}
+  .green-band{padding:30px 0 80px}
+  .green-band .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;overflow:visible;margin:56px 0 0;padding:0}
+  .green-band .review{padding:32px 30px 24px}
+  .green-band .review:nth-child(2){translate:0 -20px}
+  .swipe-dots{display:none}
+  .final .shell{padding-inline:32px}
+  .final-card{padding:84px 40px 40px}
+  .row{grid-template-columns:1fr 1fr}
+  .final-card > p,.checks{display:block}
+  .checks{display:flex}
+  form{padding:32px;gap:16px}
+  .more-body{gap:16px;padding:4px 16px 16px}
+}
+@media (min-width:980px){
+  .nav{display:flex;justify-content:space-between}
+  .nav-links{display:flex}
+  .nav-cta{display:inline-flex}
+  .menu-btn,.menu{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-delay:0ms !important;transition-duration:.01ms !important;transition-delay:0ms !important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Shared drawing parts for every shirt on the page. Not display:none, or the clip paths stop working. -->
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="tee-f" d="M166 36 L92 56 L26 120 Q20 127 26 134 L64 176 Q70 182 77 177 L100 160 L96 412 Q96 424 108 424 L292 424 Q304 424 304 412 L300 160 L323 177 Q330 182 336 176 L374 134 Q380 127 374 120 L308 56 L234 36 Q200 74 166 36 Z"/>
+    <path id="tee-b" d="M166 36 L92 56 L26 120 Q20 127 26 134 L64 176 Q70 182 77 177 L100 160 L96 412 Q96 424 108 424 L292 424 Q304 424 304 412 L300 160 L323 177 Q330 182 336 176 L374 134 Q380 127 374 120 L308 56 L234 36 Q200 50 166 36 Z"/>
+    <clipPath id="clip-f"><use href="#tee-f"/></clipPath>
+    <clipPath id="clip-b"><use href="#tee-b"/></clipPath>
+    <linearGradient id="shade-y" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".10"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".24"/>
+    </linearGradient>
+    <linearGradient id="shade-x" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".22"/>
+      <stop offset=".28" stop-color="#000" stop-opacity="0"/>
+      <stop offset=".72" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </linearGradient>
+    <pattern id="engrave" width="3.2" height="10" patternUnits="userSpaceOnUse">
+      <rect width="2" height="10" fill="#f2eee3"/>
+    </pattern>
+    <pattern id="knit" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#0f3a33"/>
+      <path d="M0 3 L3 0 L6 3" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="sheen" cx=".5" cy=".28" r=".85">
+      <stop offset="0" stop-color="#2f7a69" stop-opacity=".55"/>
+      <stop offset=".6" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".35"/>
+    </radialGradient>
+    <linearGradient id="g-dtf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dcae48"/>
+      <stop offset=".5" stop-color="#f2eee3"/>
+      <stop offset="1" stop-color="#5fc3a6"/>
+    </linearGradient>
+    <pattern id="stitch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="4" height="4" fill="#cfc9b8"/>
+      <rect width="2.2" height="4" fill="#f7f4ea"/>
+    </pattern>
+    <filter id="emboss" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#000" flood-opacity=".6"/>
+    </filter>
+    <pattern id="halftone" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2.1" fill="#f2eee3"/>
+    </pattern>
+    <g id="folds" fill="none" stroke="#000" stroke-opacity=".1" stroke-width="7" stroke-linecap="round">
+      <path d="M142 182 Q158 294 138 416"/>
+      <path d="M266 194 Q250 304 264 418"/>
+    </g>
+    <!-- small chest mark: the Brendo B in its dashed ring -->
+    <symbol id="mk-s" viewBox="-20 -20 40 40">
+      <circle r="17" fill="none" stroke="#dcae48" stroke-width="1.6" stroke-dasharray="2.4 2.2"/>
+      <text y="6.6" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="19" fill="#f2eee3">B</text>
+    </symbol>
+    <!-- large back mark: ring, engraved B, wordmark -->
+    <symbol id="mk-l" viewBox="-80 -80 160 200">
+      <circle r="62" fill="none" stroke="#dcae48" stroke-width="2.6" stroke-dasharray="5 4.5"/>
+      <text y="25" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="76" fill="url(#engrave)" stroke="#f2eee3" stroke-width=".8">B</text>
+      <text x="3" y="108" text-anchor="middle" font-family="Heebo,sans-serif" font-weight="800" font-size="21" letter-spacing="7" fill="#f2eee3">BRENDO</text>
+    </symbol>
+    <g id="stripes">
+      <line x1="17" y1="100" x2="93" y2="190"/>
+      <line x1="27" y1="91" x2="96.5" y2="174"/>
+      <line x1="383" y1="100" x2="307" y2="190"/>
+      <line x1="373" y1="91" x2="303.5" y2="174"/>
+    </g>
+    <!-- the finished front, for static shirts -->
+    <g id="tee-front-done">
+      <use href="#tee-f" fill="#0f3a33" stroke="rgba(0,0,0,.3)" stroke-width="1.5"/>
+      <path d="M166 36 Q200 50 234 36 Q200 74 166 36 Z" fill="#082621"/>
+      <g clip-path="url(#clip-f)">
+        <use href="#stripes" stroke="#dcae48" stroke-width="7"/>
+        <use href="#tee-f" fill="url(#shade-y)"/>
+        <use href="#tee-f" fill="url(#shade-x)"/>
+        <use href="#folds"/>
+      </g>
+      <path d="M166 36 Q200 74 234 36" fill="none" stroke="#dcae48" stroke-width="5"/>
+      <use href="#mk-s" x="233" y="90" width="38" height="38"/>
+    </g>
+    <g id="tee-back-done">
+      <use href="#tee-b" fill="#0f3a33" stroke="rgba(0,0,0,.3)" stroke-width="1.5"/>
+      <g clip-path="url(#clip-b)">
+        <use href="#stripes" stroke="#dcae48" stroke-width="7"/>
+        <use href="#tee-b" fill="url(#shade-y)"/>
+        <use href="#tee-b" fill="url(#shade-x)"/>
+        <use href="#folds"/>
+      </g>
+      <path d="M166 36 Q200 50 234 36" fill="none" stroke="#dcae48" stroke-width="5"/>
+      <use href="#mk-l" x="120" y="138" width="160" height="200"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- top: nav + hero -->
+<div class="top" id="top">
+  <header class="nav">
+    <button class="menu-btn" type="button" aria-label="פתיחת התפריט" aria-expanded="false" aria-controls="menu"><i class="ph ph-list"></i></button>
+    <a class="brand" href="#top"><img src="assets/img/logo.jpg" alt=""><b>Brendo</b></a>
+    <ul class="nav-links">
+      <li><a href="#uniform">המדים</a></li>
+      <li><a href="#how">איך זה עובד</a></li>
+      <li><a href="#compare">השוואה</a></li>
+      <li><a href="#faq">שאלות</a></li>
+    </ul>
+    <a class="btn btn-light nav-cta" href="#quote">לקבלת הצעת מחיר</a>
+    <nav class="menu" id="menu" aria-label="תפריט">
+      <a href="#how">איך זה עובד</a>
+      <a href="#uniform">המדים</a>
+      <a href="#methods">שיטות הדפסה</a>
+      <a href="#compare">השוואה</a>
+      <a href="#faq">שאלות</a>
+      <a class="btn btn-green" href="#quote">לקבלת הצעת מחיר</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>מדים שנראים כמו <em>המותג שלכם</em></h1>
+    <p class="lead">חולצות, קפוצ'ונים וכובעים בצבעים של העסק, עם הלוגו בהדפסה או ברקמה. מעצבים איתכם ומייצרים לכל הצוות.</p>
+    <div class="hero-stage">
+      <svg class="tee rise" viewBox="0 0 400 440" role="img" aria-label="חולצת המדים של Brendo, ירוקה עם פסים צהובים בשרוולים ולוגו קטן בחזה">
+        <use href="#tee-front-done"/>
+      </svg>
+      <div class="chip chip-a">
+        <span class="ico"><svg viewBox="0 0 40 40" width="26" height="26"><use href="#mk-s"/></svg></span>
+        <span><small>לוגו בחזה</small><strong>רקמה עדינה</strong></span>
+      </div>
+      <div class="chip chip-b">
+        <span class="ico"><span class="swatch"></span></span>
+        <span><small>שרוולים</small><strong>פס צהוב כפול</strong></span>
+      </div>
+    </div>
+    <a class="btn btn-green hero-cta" href="#quote">לקבלת הצעת מחיר</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- the process, animated: message, design, proof, order -->
+  <section id="how">
+    <div class="shell">
+      <div class="s-head rv">
+        <h2>מהודעה אחת <em class="hl">למדים מוכנים</em></h2>
+        <p>ככה זה עובד אצלנו, מהרגע ששולחים לנו את הלוגו ועד שהמדים מגיעים לצוות.</p>
+      </div>
+      <div class="proc rv" id="proc">
+        <ol class="proc-steps">
+          <li><button type="button"><span class="bar"><i></i></span><b>שולחים לוגו ורעיון</b><small>בהודעה, עם הלוגו והצבעים של העסק</small></button></li>
+          <li><button type="button"><span class="bar"><i></i></span><b>אנחנו מעצבים</b><small>צבע, פסים ומיקום הלוגו</small></button></li>
+          <li><button type="button"><span class="bar"><i></i></span><b>מאשרים הדמיה</b><small>חזית וגב, לפני שמייצרים</small></button></li>
+          <li><button type="button"><span class="bar"><i></i></span><b>מקבלים את המדים</b><small>מוכן לחלוקה לצוות</small></button></li>
+        </ol>
+        <div class="proc-stage" aria-live="off">
+          <div class="scene">
+            <div class="chat">
+              <div class="chat-head"><img src="assets/img/logo.jpg" alt=""><b>Brendo</b></div>
+              <div class="bub me a1">
+                <div class="file">
+                  <svg viewBox="0 0 40 40"><use href="#mk-s"/></svg>
+                  <span><b>logo.png</b><small>הלוגו של העסק</small></span>
+                </div>
+                <p>היי, רוצים מדים לצוות. ירוק כמו הלוגו, עם פסים צהובים בשרוולים</p>
+              </div>
+              <div class="reply">
+                <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+                <div class="bub them a3"><p>מעולה, מכינים לכם הדמיה</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="scene">
+            <div class="canvas">
+              <div class="palette" aria-hidden="true">
+                <span class="sw-g" style="background:#0f3a33"></span>
+                <span class="sw-y" style="background:#dcae48"></span>
+                <span style="background:#f2eee3"></span>
+              </div>
+              <svg class="d-shirt" viewBox="0 0 400 440" role="img" aria-label="עיצוב החולצה: צבע, פסים ולוגו">
+                <use href="#tee-f" class="d-body"/>
+                <path class="d-neck" d="M166 36 Q200 50 234 36 Q200 74 166 36 Z"/>
+                <g clip-path="url(#clip-f)">
+                  <g class="d-stripes">
+                    <line x1="17" y1="100" x2="93" y2="190" pathLength="1"/>
+                    <line x1="27" y1="91" x2="96.5" y2="174" pathLength="1"/>
+                    <line x1="383" y1="100" x2="307" y2="190" pathLength="1"/>
+                    <line x1="373" y1="91" x2="303.5" y2="174" pathLength="1"/>
+                  </g>
+                  <use href="#tee-f" fill="url(#shade-y)"/>
+                  <use href="#tee-f" fill="url(#shade-x)"/>
+                </g>
+                <path class="d-collar" d="M166 36 Q200 74 234 36" pathLength="1"/>
+                <use href="#mk-s" class="d-mark" x="233" y="90" width="38" height="38"/>
+              </svg>
+            </div>
+          </div>
+          <div class="scene">
+            <div class="approve">
+              <div class="pair">
+                <svg viewBox="0 0 400 440" aria-hidden="true"><use href="#tee-front-done"/></svg>
+                <svg viewBox="0 0 400 440" aria-hidden="true"><use href="#tee-back-done"/></svg>
+              </div>
+              <div class="ap-card">
+                <small>הדמיה לאישור</small>
+                <b>מדי צוות, חזית וגב</b>
+                <span class="ap-btn"><span class="t1">מאשרים</span><span class="t2"><i class="ph ph-check"></i>מאושר</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="scene">
+            <div class="stack">
+              <svg viewBox="0 0 400 440" aria-hidden="true"><use href="#tee-front-done"/></svg>
+              <svg viewBox="0 0 400 440" aria-hidden="true"><use href="#tee-front-done"/></svg>
+              <svg viewBox="0 0 400 440" aria-hidden="true"><use href="#tee-front-done"/></svg>
+              <span class="badge"><i class="ph ph-check-circle"></i>מוכן לחלוקה</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- the uniform, built step by step -->
+  <section class="band" id="uniform">
+    <div class="shell">
+      <div class="s-head rv">
+        <h2>ככה נראים המדים של Brendo</h2>
+        <p>עיצבנו לעצמנו מדים כדי להראות איך זה עובד. אותו תהליך בדיוק נעשה עם הצבעים והלוגו שלכם.</p>
+      </div>
+
+      <div class="builder" id="builder">
+        <div class="callcol">
+          <div class="co" data-n="1"><span class="n">1</span><h3>צבע המותג</h3><p>כל החולצה בירוק של Brendo.</p></div>
+          <div class="co" data-n="2"><span class="n">2</span><h3>פסים צהובים</h3><p>פס כפול על השרוולים וצווארון תואם.</p></div>
+        </div>
+
+        <div>
+          <div class="stage-wrap">
+            <div class="stage" id="stage">
+              <div class="flipper">
+                <div class="slab" aria-hidden="true"><svg viewBox="0 0 400 440"><use href="#tee-f"/></svg><svg viewBox="0 0 400 440"><use href="#tee-f"/></svg><svg viewBox="0 0 400 440"><use href="#tee-f"/></svg><svg viewBox="0 0 400 440"><use href="#tee-f"/></svg><svg viewBox="0 0 400 440"><use href="#tee-f"/></svg><svg viewBox="0 0 400 440"><use href="#tee-f"/></svg></div>
+                <svg class="face front" viewBox="0 0 400 440" role="img" aria-label="חזית החולצה">
+                  <use href="#tee-f" class="t-body"/>
+                  <path class="t-neck" d="M166 36 Q200 50 234 36 Q200 74 166 36 Z"/>
+                  <g clip-path="url(#clip-f)">
+                    <g class="t-stripes">
+                      <line x1="17" y1="100" x2="93" y2="190" pathLength="1"/>
+                      <line x1="27" y1="91" x2="96.5" y2="174" pathLength="1"/>
+                      <line x1="383" y1="100" x2="307" y2="190" pathLength="1"/>
+                      <line x1="373" y1="91" x2="303.5" y2="174" pathLength="1"/>
+                    </g>
+                    <use href="#tee-f" fill="url(#shade-y)"/>
+                    <use href="#tee-f" fill="url(#shade-x)"/>
+                    <use href="#folds"/>
+                  </g>
+                  <path class="t-collar" d="M166 36 Q200 74 234 36" pathLength="1"/>
+                  <use href="#mk-s" class="t-mark chest" x="233" y="90" width="38" height="38"/>
+                </svg>
+                <svg class="face back" viewBox="0 0 400 440" role="img" aria-label="גב החולצה">
+                  <use href="#tee-b" class="t-body"/>
+                  <g clip-path="url(#clip-b)">
+                    <g class="t-stripes">
+                      <line x1="17" y1="100" x2="93" y2="190" pathLength="1"/>
+                      <line x1="27" y1="91" x2="96.5" y2="174" pathLength="1"/>
+                      <line x1="383" y1="100" x2="307" y2="190" pathLength="1"/>
+                      <line x1="373" y1="91" x2="303.5" y2="174" pathLength="1"/>
+                    </g>
+                    <use href="#tee-b" fill="url(#shade-y)"/>
+                    <use href="#tee-b" fill="url(#shade-x)"/>
+                    <use href="#folds"/>
+                  </g>
+                  <path class="t-collar" d="M166 36 Q200 50 234 36" pathLength="1"/>
+                  <use href="#mk-l" class="t-mark big" x="120" y="138" width="160" height="200"/>
+                </svg>
+              </div>
+            </div>
+            <div class="stage-glow"></div>
+          </div>
+          <div class="stage-controls">
+            <div class="seg" role="group" aria-label="צד החולצה">
+              <button type="button" data-side="front" aria-pressed="true">חזית</button>
+              <button type="button" data-side="back" aria-pressed="false">גב</button>
+            </div>
+            <button class="replay" type="button" id="replay"><i class="ph ph-arrow-counter-clockwise"></i>הצגה חוזרת</button>
+          </div>
+          <p class="drag-hint"><i class="ph ph-hand-swipe-left"></i>גררו את החולצה כדי לסובב אותה</p>
+        </div>
+
+        <div class="callcol">
+          <div class="co" data-n="3"><span class="n">3</span><h3>לוגו קטן בחזה</h3><p>הסמל של Brendo בצד שמאל של החזה.</p></div>
+          <div class="co" data-n="4"><span class="n">4</span><h3>לוגו גדול בגב</h3><p>הסמל ושם המותג במרכז הגב.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- methods + items -->
+  <section class="band" id="methods">
+    <div class="shell">
+      <div class="s-head methods-head rv">
+        <h2 class="green-type">על מה מדפיסים ואיך</h2>
+        <p>ארבע שיטות, ואנחנו בוחרים איתכם את המתאימה.</p>
+      </div>
+    </div>
+    <div class="marquee rv" aria-label="הפריטים שאפשר למתג">
+      <div class="track"><ul class="pills"><li><i class="ph ph-t-shirt"></i>חולצות וטי-שירטים</li><li><i class="ph ph-person-simple-run"></i>דרייפיט</li><li><i class="ph ph-hoodie"></i>קפוצ'ונים</li><li><i class="ph ph-baseball-cap"></i>כובעים</li><li><i class="ph ph-waves"></i>מגבות</li><li><i class="ph ph-tote-simple"></i>תיקים ועוד</li></ul><ul class="pills" aria-hidden="true"><li><i class="ph ph-t-shirt"></i>חולצות וטי-שירטים</li><li><i class="ph ph-person-simple-run"></i>דרייפיט</li><li><i class="ph ph-hoodie"></i>קפוצ'ונים</li><li><i class="ph ph-baseball-cap"></i>כובעים</li><li><i class="ph ph-waves"></i>מגבות</li><li><i class="ph ph-tote-simple"></i>תיקים ועוד</li></ul></div>
+    </div>
+    <div class="shell">
+      <div class="techs">
+        <article class="tech rv">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="url(#knit)"/><rect width="200" height="200" fill="url(#sheen)"/><g class="glyph"><circle cx="100" cy="104" r="76" fill="none" stroke="#dcae48" stroke-width="2" stroke-dasharray="5 6"/><text x="100" y="142" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="122" fill="#f2eee3">B</text></g></svg>
+          <h3>הדפסת משי</h3><span class="tag">כמויות גדולות</span>
+        </article>
+        <article class="tech rv">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="url(#knit)"/><rect width="200" height="200" fill="url(#sheen)"/><g class="glyph"><text x="100" y="142" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="122" fill="url(#g-dtf)" stroke="#fff" stroke-opacity=".55" stroke-width="1.2">B</text></g></svg>
+          <h3>DTF</h3><span class="tag">גם כמויות קטנות</span>
+        </article>
+        <article class="tech rv">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="url(#knit)"/><rect width="200" height="200" fill="url(#sheen)"/><g class="glyph"><text x="100" y="142" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="122" fill="url(#stitch)" stroke="#f2eee3" stroke-width="2.4" filter="url(#emboss)">B</text></g></svg>
+          <h3>רקמה</h3><span class="tag">פולו, כובעים, ג'קטים</span>
+        </article>
+        <article class="tech rv">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="url(#knit)"/><rect width="200" height="200" fill="url(#sheen)"/><g class="glyph"><text x="100" y="142" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="122" fill="#f2eee3" fill-opacity=".18">B</text><text x="100" y="142" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="122" fill="url(#halftone)">B</text></g></svg>
+          <h3>DTG</h3><span class="tag">כותנה ועיצוב מורכב</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- us vs. the rest -->
+  <section class="band" id="compare">
+    <div class="shell">
+      <div class="s-head rv">
+        <h2>למה Brendo ולא עוד בית דפוס</h2>
+        <p>ההבדל הוא לא רק בהדפסה. הוא במי שעוזר לכם להחליט איך המדים ייראו.</p>
+      </div>
+      <div class="compare rv" role="table" aria-label="השוואה בין Brendo לחלופות">
+        <div class="cmp-head" role="row">
+          <div role="columnheader"></div>
+          <div role="columnheader" class="us-h"><img src="assets/img/logo.jpg" alt="">Brendo</div>
+          <div role="columnheader">בית דפוס רגיל</div>
+          <div role="columnheader">הזמנה מחו"ל</div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="k" role="rowheader"><span>עיצוב</span></div>
+          <div class="us" role="cell"><i class="ph ph-check"></i>עיצוב אישי לפי העסק שלכם</div>
+          <div class="them" role="cell"><b>בית דפוס: </b>מביאים קובץ מוכן</div>
+          <div class="them" role="cell"><b>חו"ל: </b>תבנית מתוך קטלוג</div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="k" role="rowheader"><span>שיטות הדפסה</span></div>
+          <div class="us" role="cell"><i class="ph ph-check"></i>משי, DTF, רקמה ו-DTG</div>
+          <div class="them" role="cell"><b>בית דפוס: </b>לרוב שיטה אחת</div>
+          <div class="them" role="cell"><b>חו"ל: </b>מה שהספק מציע</div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="k" role="rowheader"><span>כמויות קטנות</span></div>
+          <div class="us" role="cell"><i class="ph ph-check"></i>אפשר, עם DTF</div>
+          <div class="them" role="cell"><b>בית דפוס: </b>לרוב מינימום גבוה</div>
+          <div class="them" role="cell"><b>חו"ל: </b>משתנה מספק לספק</div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="k" role="rowheader"><span>פריטים</span></div>
+          <div class="us" role="cell"><i class="ph ph-check"></i>חולצות, קפוצ'ונים, כובעים, מגבות, תיקים ועוד</div>
+          <div class="them" role="cell"><b>בית דפוס: </b>בעיקר חולצות</div>
+          <div class="them" role="cell"><b>חו"ל: </b>קטלוג קבוע</div>
+        </div>
+        <div class="cmp-row" role="row">
+          <div class="k" role="rowheader"><span>תקשורת</span></div>
+          <div class="us" role="cell"><i class="ph ph-check"></i>בעברית, בהודעה ישירה</div>
+          <div class="them" role="cell"><b>בית דפוס: </b>טלפון בשעות פעילות</div>
+          <div class="them" role="cell"><b>חו"ל: </b>צ'אט באנגלית ומשלוח מחו"ל</div>
+        </div>
+      </div>
+      <p class="cmp-note">ההשוואה כללית ולא מתייחסת לספק מסוים.</p>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <div class="green-wrap" id="reviews">
+    <svg class="wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path fill="#0f3a33" d="M0,104 C220,26 460,6 720,46 C980,86 1220,126 1440,58 L1440,140 L0,140 Z"/></svg>
+    <section class="green-band">
+      <div class="band-rings" aria-hidden="true">
+        <svg class="r1" viewBox="-110 -110 220 220"><circle r="100" fill="none" stroke="rgba(220,174,72,.3)" stroke-width="1.2" stroke-dasharray="5 7"/><circle r="74" fill="none" stroke="rgba(242,238,227,.08)" stroke-width="1"/></svg>
+        <svg class="r2" viewBox="-110 -110 220 220"><circle r="100" fill="none" stroke="rgba(242,238,227,.1)" stroke-width="1.2" stroke-dasharray="5 7"/><circle r="74" fill="none" stroke="rgba(220,174,72,.2)" stroke-width="1"/></svg>
+      </div>
+      <div class="shell">
+        <div class="s-head rv">
+          <h2>מה אומרים עלינו</h2>
+          <p>מה שלקוחות כתבו לנו אחרי שקיבלו את המדים.</p>
+        </div>
+        <div class="reviews">
+        <figure class="review rv">
+          <span class="q" aria-hidden="true">”</span>
+          <blockquote><p>חיפשנו בגדי עבודה עם הלוגו שלנו, שיהיו גם ייצוגיים וגם נוחים לעבודה היומיומית. אהבנו את התוצאה ואת המראה המקצועי שהתקבל.</p></blockquote>
+          <figcaption><span class="av"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mk-s"/></svg></span>לקוח Brendo</figcaption>
+        </figure>
+        <figure class="review rv">
+          <span class="q" aria-hidden="true">”</span>
+          <blockquote><p>רצינו ליצור מראה אחיד לכל העובדים, ו-Brendo התאימו לנו פתרון מצוין. הבגדים נראים טוב והלוגו משתלב בצורה יפה.</p></blockquote>
+          <figcaption><span class="av"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mk-s"/></svg></span>לקוח Brendo</figcaption>
+        </figure>
+        <figure class="review rv">
+          <span class="q" aria-hidden="true">”</span>
+          <blockquote><p>הזמנו בגדי עבודה ממותגים לצוות שלנו והתוצאה יצאה מעולה. המיתוג בולט והכול נראה אחיד ומסודר.</p></blockquote>
+          <figcaption><span class="av"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mk-s"/></svg></span>לקוח Brendo</figcaption>
+        </figure>
+        </div>
+        <div class="swipe-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+      </div>
+    </section>
+    <svg class="wave flip" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path fill="#0f3a33" d="M0,104 C220,26 460,6 720,46 C980,86 1220,126 1440,58 L1440,140 L0,140 Z"/></svg>
+  </div>
+
+  <!-- faq -->
+  <section id="faq">
+    <div class="shell">
+      <div class="s-head rv"><h2>שאלות שחוזרות אצלנו</h2></div>
+      <div class="faq rv">
+        <details>
+          <summary>מה הכמות המינימלית להזמנה?</summary>
+          <p><span class="todo">להשלמה על ידי Brendo</span> כאן תיכנס הכמות המינימלית האמיתית, ואם היא משתנה לפי שיטת ההדפסה כדאי לציין את זה.</p>
+        </details>
+        <details>
+          <summary>כמה זמן לוקח לקבל את ההזמנה?</summary>
+          <p><span class="todo">להשלמה על ידי Brendo</span> כאן ייכנס טווח ימי העבודה מרגע אישור ההדמיה ועד המשלוח.</p>
+        </details>
+        <details>
+          <summary>אין לנו עדיין רעיון לעיצוב. אפשר לעזור?</summary>
+          <p>כן. אפשר לשלוח רק את הלוגו והצבעים של העסק, ואנחנו נציע איך המדים ייראו, כמו שעשינו למדים של Brendo.</p>
+        </details>
+        <details>
+          <summary>אילו קבצי לוגו צריך לשלוח?</summary>
+          <p>הכי טוב קובץ וקטורי, כלומר AI, EPS, SVG או PDF. אם יש לכם רק תמונה רגילה, שלחו אותה ונבדוק מה אפשר לעשות איתה.</p>
+        </details>
+        <details>
+          <summary>אפשר להזמין פריט שלא מופיע כאן?</summary>
+          <p>כן. חולצות, קפוצ'ונים, דרייפיט, כובעים, מגבות ותיקים הם מה שאנחנו עושים הכי הרבה, אבל אם אתם מחפשים פריט אחר שלחו הודעה ונבדוק.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- quote form -->
+  <section class="final" id="quote">
+    <div class="shell">
+      <div class="final-card">
+        <div class="rings" aria-hidden="true">
+          <svg class="r1" viewBox="-110 -110 220 220"><circle r="100" fill="none" stroke="rgba(220,174,72,.28)" stroke-width="1.4" stroke-dasharray="5 7"/><circle r="72" fill="none" stroke="rgba(47,122,105,.55)" stroke-width="1"/></svg>
+          <svg class="r2" viewBox="-110 -110 220 220"><circle r="100" fill="none" stroke="rgba(47,122,105,.6)" stroke-width="1.4" stroke-dasharray="5 7"/><circle r="70" fill="none" stroke="rgba(220,174,72,.2)" stroke-width="1"/></svg>
+        </div>
+        <h2 class="rv">בואו נעצב את המדים שלכם</h2>
+        <p class="rv">משאירים פרטים ואנחנו חוזרים אליכם עם הצעת מחיר לפריט, לכמות ולשיטה שמתאימה לכם.</p>
+        <ul class="checks rv">
+          <li><i class="ph ph-check"></i>הצעת מחיר לפי פריט וכמות</li>
+          <li><i class="ph ph-check"></i>המלצה על שיטת הדפסה</li>
+          <li><i class="ph ph-check"></i>הדמיה לפני ייצור</li>
+        </ul>
+
+        <form id="quote-form" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="f-name">שם מלא</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+              <span class="err" data-for="f-name"></span>
+            </div>
+            <div class="field">
+              <label for="f-phone">טלפון</label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+              <span class="err" data-for="f-phone"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="f-biz">שם העסק <span class="opt">(לא חובה)</span></label>
+              <input id="f-biz" name="business" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-item">מה מעניין אתכם</label>
+              <div class="sel"><select id="f-item" name="item" required>
+                <option value="">בחרו פריט</option>
+                <option>מדים מלאים לצוות</option>
+                <option>חולצות וטי-שירטים</option>
+                <option>חולצות דרייפיט</option>
+                <option>קפוצ'ונים</option>
+                <option>כובעים</option>
+                <option>מגבות ממותגות</option>
+                <option>תיקים</option>
+                <option>פריט אחר</option>
+              </select></div>
+              <span class="err" data-for="f-item"></span>
+            </div>
+          </div>
+          <details class="more">
+            <summary>עוד פרטים <span class="opt">(לא חובה)</span></summary>
+            <div class="more-body">
+              <div class="field">
+                <label for="f-qty">כמות משוערת</label>
+                <input id="f-qty" name="qty" type="text" inputmode="numeric" placeholder="למשל 40">
+              </div>
+              <div class="field">
+                <label for="f-note">איך דמיינתם את זה</label>
+                <textarea id="f-note" name="note" placeholder="צבעים, איפה הלוגו, תאריך יעד"></textarea>
+              </div>
+            </div>
+          </details>
+          <button class="btn btn-green" type="submit">שליחת הפרטים</button>
+          <p class="form-state" id="form-state" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="shell foot">
+    <a class="brand" href="#top"><img src="assets/img/logo.jpg" alt=""><b>Brendo</b></a>
+    <nav class="foot-links" aria-label="קישורים">
+      <a href="#uniform">המדים</a>
+      <a href="#how">איך זה עובד</a>
+      <a href="#faq">שאלות</a>
+      <a href="https://www.instagram.com/brendoltd/" target="_blank" rel="noopener">אינסטגרם</a>
+    </nav>
+    <small>Brendo, מוצרי קד"מ ובגדי עבודה ממותגים. כל הזכויות שמורות.</small>
+  </div>
+</footer>
+
+<script>
+// phone menu: opens on tap, closes on a link, Escape or a tap outside
+(function(){
+  var btn = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
+  if (!btn || !menu) return;
+  function set(open){
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'סגירת התפריט' : 'פתיחת התפריט');
+    btn.querySelector('i').className = open ? 'ph ph-x' : 'ph ph-list';
+  }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); set(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function(e){ if (e.target.closest('a')) set(false); });
+  document.addEventListener('click', function(e){ if (!menu.contains(e.target)) set(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ set(false); btn.focus(); } });
+})();
+
+// reveal on enter. IntersectionObserver, never a scroll listener.
+(function(){
+  var items = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    items.forEach(function(el){ el.classList.add('in'); }); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var sibs = Array.prototype.filter.call(e.target.parentNode.children, function(n){ return n.classList.contains('rv'); });
+      e.target.style.transitionDelay = Math.min(sibs.indexOf(e.target), 4) * 70 + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  items.forEach(function(el){ io.observe(el); });
+})();
+
+// uniform builder. four beats: colour, stripes, chest mark, flip to the back mark.
+// After that the shirt is the visitor's: it turns as the page scrolls past it (one full turn
+// across the section), and dragging or a sideways swipe adds to that. angle = offset + scroll.
+(function(){
+  var stage = document.getElementById('stage');
+  if (!stage) return;
+  var flipper = stage.querySelector('.flipper'),
+      builder = document.getElementById('builder'),
+      cos = builder.querySelectorAll('.co'),
+      seg = builder.querySelectorAll('.seg button'),
+      replay = document.getElementById('replay'),
+      timers = [], angle = 0, drag = null,
+      linked = false, offset = 0, raf = 0,
+      reduced = matchMedia('(prefers-reduced-motion: reduce)');
+
+  function at(ms, fn){ timers.push(setTimeout(fn, ms)); }
+  function turn(a, animate){
+    angle = a;
+    flipper.style.transition = animate ? '' : 'none';
+    flipper.style.transform = 'rotateY(' + a + 'deg)';
+    var back = Math.abs(Math.round(a / 180)) % 2 === 1;
+    seg.forEach(function(b){ b.setAttribute('aria-pressed', String((b.dataset.side === 'back') === back)); });
+  }
+  function scrollAngle(){ // -180..180 as the stage travels up through the viewport
+    var r = stage.getBoundingClientRect(), vh = innerHeight;
+    var p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+    return (p - .5) * 360;
+  }
+  function rebase(){ offset = angle - scrollAngle(); }
+  function link(){ if (reduced.matches || linked) return; linked = true; rebase(); }
+  function side(back){ // nearest equivalent angle, so it never spins the long way round
+    var target = back ? 180 : 0;
+    turn(target + 360 * Math.round((angle - target) / 360), true);
+    rebase();
+  }
+  function loop(){ // runs only while the stage is on screen
+    if (linked && !drag){
+      var sa = scrollAngle();
+      if (sa !== loop.last){ loop.last = sa;
+        var a = offset + sa;
+        // keep the CSS transition of a toggle/settle alive; scroll only takes over when it moves
+        turn(a, false);
+      }
+    }
+    raf = requestAnimationFrame(loop);
+  }
+  function step(n){
+    for (var i = 1; i <= 4; i++) stage.classList.toggle('c' + i, i <= n);
+    cos.forEach(function(c){
+      var k = +c.dataset.n;
+      c.classList.toggle('reached', k <= n);
+      c.classList.toggle('now', k === n);
+    });
+  }
+  function stop(){ timers.forEach(clearTimeout); timers = []; }
+  function play(){
+    stop(); side(false); step(0);
+    at(500,  function(){ step(1); });
+    at(1600, function(){ step(2); });
+    at(2700, function(){ step(3); });
+    at(3800, function(){ step(4); side(true); });
+    at(6900, function(){ side(false); cos.forEach(function(c){ c.classList.remove('now'); }); timers = []; });
+    at(7900, link); // after the flip back has settled
+  }
+  function finished(){ stop(); step(4); cos.forEach(function(c){ c.classList.remove('now'); }); link(); }
+
+  seg.forEach(function(b){ b.addEventListener('click', function(){ if (timers.length) finished(); side(b.dataset.side === 'back'); }); });
+  replay.addEventListener('click', function(){ reduced.matches ? (finished(), side(false)) : play(); });
+
+  stage.addEventListener('pointerdown', function(e){
+    if (e.button > 0) return;
+    drag = { x: e.clientX, a: angle, lx: e.clientX, lt: e.timeStamp, v: 0, moved: false };
+    stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener('pointermove', function(e){
+    if (!drag) return;
+    var dx = e.clientX - drag.x;
+    if (!drag.moved){
+      if (Math.abs(dx) < 4) return;
+      drag.moved = true;
+      stage.classList.add('dragging');
+      if (timers.length) finished();
+    }
+    var dt = e.timeStamp - drag.lt;
+    if (dt > 0) drag.v = (e.clientX - drag.lx) / dt; // px per ms
+    drag.lx = e.clientX; drag.lt = e.timeStamp;
+    turn(drag.a + dx * 0.6, false);
+  });
+  function release(){
+    if (!drag) return;
+    stage.classList.remove('dragging');
+    if (drag.moved){
+      var projected = angle + drag.v * 0.6 * 180; // a flick carries on before it settles
+      turn(Math.round(projected / 180) * 180, true);
+      rebase();
+    }
+    drag = null;
+  }
+  stage.addEventListener('pointerup', release);
+  stage.addEventListener('pointercancel', release);
+  // a sideways trackpad swipe turns it too; vertical scrolling is left to the page
+  stage.addEventListener('wheel', function(e){
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    if (timers.length) finished();
+    turn(angle - e.deltaX * 0.5, false);
+    clearTimeout(stage._settle);
+    stage._settle = setTimeout(function(){ turn(Math.round(angle / 180) * 180, true); rebase(); }, 160);
+    rebase();
+  }, { passive: false });
+
+  if (reduced.matches){ finished(); side(false); }
+  else if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(e){
+      if (e[0].isIntersecting){ io.disconnect(); play(); }
+    }, { threshold: 0.45 });
+    io.observe(stage);
+    new IntersectionObserver(function(e){
+      cancelAnimationFrame(raf);
+      if (e[0].isIntersecting) raf = requestAnimationFrame(loop);
+    }).observe(stage);
+  } else play();
+})();
+
+// process stepper: four scenes, auto-advancing while on screen, any step can be clicked.
+(function(){
+  var proc = document.getElementById('proc');
+  if (!proc) return;
+  var items = proc.querySelectorAll('.proc-steps li'),
+      scenes = proc.querySelectorAll('.scene'),
+      DUR = 3600, i = 0, timer = null, live = false,
+      reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  proc.style.setProperty('--dur', DUR + 'ms');
+
+  function show(n){
+    i = n;
+    clearTimeout(timer);
+    scenes.forEach(function(s){ s.classList.remove('on'); });
+    items.forEach(function(li, k){ li.classList.remove('on'); li.classList.toggle('done', k < n); });
+    void proc.offsetWidth; // restart the scene timelines and the progress bar
+    scenes[n].classList.add('on');
+    if (reduced){ items[n].classList.add('done'); return; } // no auto-advance, no moving bar
+    items[n].classList.add('on');
+    if (live) timer = setTimeout(function(){ show((n + 1) % scenes.length); }, DUR);
+  }
+  items.forEach(function(li, k){ li.querySelector('button').addEventListener('click', function(){ show(k); }); });
+
+  show(0);
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){
+      live = e[0].isIntersecting;
+      if (live) show(i); else clearTimeout(timer);
+    }, { threshold: 0.35 }).observe(proc);
+  }
+})();
+
+// review dots follow the swipe (phones only; the row is a grid from 768px)
+(function(){
+  var row = document.querySelector('.green-band .reviews'),
+      dots = document.querySelectorAll('.swipe-dots i');
+  if (!row || !dots.length) return;
+  row.addEventListener('scroll', function(){
+    var cards = row.children, mid = row.getBoundingClientRect().left + row.clientWidth / 2, best = 0, d = 1e9;
+    for (var k = 0; k < cards.length; k++){
+      var r = cards[k].getBoundingClientRect(), dist = Math.abs(r.left + r.width / 2 - mid);
+      if (dist < d){ d = dist; best = k; }
+    }
+    dots.forEach(function(el, k){ el.classList.toggle('on', k === best); });
+  }, { passive: true });
+})();
+
+// form validation. Nothing is sent anywhere yet, by request.
+(function(){
+  var form = document.getElementById('quote-form');
+  var state = document.getElementById('form-state');
+  var rules = {
+    'f-name':  function(v){ return v.trim().length >= 2 ? '' : 'מה השם שלכם?'; },
+    'f-phone': function(v){ return /^[0-9+\-\s()]{9,}$/.test(v.trim()) ? '' : 'צריך מספר טלפון תקין כדי לחזור אליכם'; },
+    'f-item':  function(v){ return v ? '' : 'בחרו פריט מהרשימה'; }
+  };
+  function check(id){
+    var el = document.getElementById(id), msg = rules[id](el.value);
+    el.closest('.field').classList.toggle('bad', !!msg);
+    el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    document.querySelector('.err[data-for="' + id + '"]').textContent = msg;
+    return !msg;
+  }
+  Object.keys(rules).forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('blur', function(){ if (el.value) check(id); });
+    el.addEventListener('input', function(){ if (el.closest('.field').classList.contains('bad')) check(id); });
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = Object.keys(rules).map(check).every(Boolean);
+    if (!ok){ state.classList.remove('on'); form.querySelector('.field.bad input, .field.bad select').focus(); return; }
+    // TODO: connect to WhatsApp or a form service before the site goes live.
+    state.textContent = 'הטופס עובד, אבל עדיין לא מחובר ליעד. הפרטים לא נשלחים לאף מקום עד שנחבר אותו.';
+    state.classList.add('on');
+  });
+})();
+</script>
+</body>
+</html>
